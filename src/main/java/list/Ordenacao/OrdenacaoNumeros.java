@@ -1,65 +1,67 @@
-/*package main.java.list.Ordenacao;
+package main.java.list.Ordenacao;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class OrdenacaoNumeros implements Comparable<Integer>{
+public class OrdenacaoNumeros {
 
-    private List<Integer> listaNumeros;
+    //atributos
+
+    private List<Integer> numerosInteirosList;
 
     public OrdenacaoNumeros() {
-        this.listaNumeros = new ArrayList<>();
+        this.numerosInteirosList = new ArrayList<>();
     }
 
     public void adicionarNumero(int numero){
-        listaNumeros.add(new Integer(numero));
+        this.numerosInteirosList.add(numero);
     };
 
-    public List<Integer> ordemAscendente(){
-        List<Integer> listaNumeroAscendente = new ArrayList<>(listaNumeros);
-        Collections.sort(listaNumeroAscendente, new ComparatorAscendente());
-        return listaNumeroAscendente;
-
-    };
-
-    public List<Integer> ordemDescendente(){
-        List<Integer> listaNumeroDescendente = new ArrayList<>(listaNumeros);
-        Collections.sort(listaNumeroDescendente);
-        return listaNumeroDescendente;
-
-    };
-
-
-
-    class ComparatorAscendente implements Comparator<Integer>{
-        @Override
-        public int compare(Integer i1, Integer i2) {
-            return Integer.compare(i1, i2);
-        }
+    public void verListaNumerosinteiros(){
+        System.out.println(numerosInteirosList);
     }
 
-    @Override
-    public int compareTo(Integer i){
-        return Integer.compare(listaNumeros, i);
+    public List<Integer> ordenarAscendente(){
+        List<Integer> numeroAscendente = new ArrayList<>(this.numerosInteirosList);
+        if(!numerosInteirosList.isEmpty()){
+            Collections.sort(numeroAscendente);
+            return numeroAscendente;
+        } else {
+            throw new RuntimeException("Lista está vazia");
+            }
+        };
+
+    public List<Integer> ordenarDecrescente(){
+        List<Integer> numeroAscendente = new ArrayList<>(this.numerosInteirosList);
+        if(!numerosInteirosList.isEmpty()){
+            numeroAscendente.sort(Collections.reverseOrder());
+            return numeroAscendente;
+        } else {
+            throw new RuntimeException("Lista está vazia");
+        }
     };
+
+
+
+    public static void main(String[] args) {
+        OrdenacaoNumeros ordenacaoNumeros = new OrdenacaoNumeros();
+        ordenacaoNumeros.adicionarNumero(10);
+        ordenacaoNumeros.adicionarNumero(20);
+        ordenacaoNumeros.adicionarNumero(30);
+        ordenacaoNumeros.adicionarNumero(15);
+        ordenacaoNumeros.adicionarNumero(25);
+        ordenacaoNumeros.verListaNumerosinteiros();
+        System.out.println(ordenacaoNumeros.ordenarAscendente());
+        System.out.println(ordenacaoNumeros.ordenarDecrescente());
+    }
 
     @Override
     public String toString() {
         return "OrdenacaoNumeros{" +
-                "listaNumeros=" + listaNumeros +
+                "numerosInteirosList=" + numerosInteirosList +
                 '}';
     }
-
-    public static void main(String[] args) {
-        OrdenacaoNumerosCorrigidos ordenacaoNumeros = new OrdenacaoNumerosCorrigidos();
-        ordenacaoNumeros.adicionarNumero(-30);
-        ordenacaoNumeros.adicionarNumero(20);
-        ordenacaoNumeros.adicionarNumero(10);
-        System.out.println(ordenacaoNumeros.listaNumeros);
-        System.out.println(ordenacaoNumeros.ordemAscendente());
-    }
-
 }
-*/
